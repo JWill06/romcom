@@ -37,11 +37,29 @@ document.addEventListener('DOMContentLoaded', function () {
     toSaveTagline1 = document.querySelector('.tagline-1');
     toSaveTagline2 = document.querySelector('.tagline-2');
     toSaveComplete = createCover (toSaveCover, toSaveTitle, toSaveTagline1, toSaveTagline2);
-    savedCovers.push(toSaveComplete)
-  })
+  
+    var originalCover = true;
+
+    for (var i = 0; i < savedCovers.length; i++){
+      if (
+        (toSaveComplete.title === savedCovers[i].title) && 
+        (toSaveComplete.tagline1 === savedCovers[i].tagline1) && 
+        (toSaveComplete.tagline2 === savedCovers[i].tagline2) && 
+        (toSaveComplete.coverImg === savedCovers[i].coverImg)
+        ){
+          originalCover = false;
+          console.log('Not Saved')
+          return
+        } 
+      }
+        if(originalCover = true){
+          savedCovers.push(toSaveComplete)
+          console.log('Success!!!!!!')
+        }
+  });
 // We've provided a few variables below
 var savedCovers = [
-  createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  
 ];
 var currentCover = document.querySelector('.main-cover');
 
