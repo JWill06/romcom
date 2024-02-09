@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var viewSavedButton = document.querySelector('.view-saved-button');
   var makeNewButton = document.querySelector('.make-new-button');
 
-  
+
   makeNewButton.addEventListener('click', function(event){
     event.preventDefault();
     locationUpdate(formSection, homeButton, homeSection, homeSection, saveCoverButton, randomCoverButton, true)
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
     locationUpdate(formSection, homeButton, homeSection, randomCoverButton, viewSavedButton, saveCoverButton, makeNewButton, false)
     makeNewButton.classList.remove('hidden')
   }); 
-  
 
 
 // We've provided a few variables below
