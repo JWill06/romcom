@@ -30,7 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
     makeNewButton.classList.remove('hidden')
   }); 
 
-
+  saveCoverButton.addEventListener('click', function(event){
+    event.preventDefault();
+    toSaveCover = document.querySelector('.cover-image');
+    toSaveTitle = document.querySelector('.cover-title');
+    toSaveTagline1 = document.querySelector('.tagline-1');
+    toSaveTagline2 = document.querySelector('.tagline-2');
+    toSaveComplete = createCover (toSaveCover, toSaveTitle, toSaveTagline1, toSaveTagline2);
+    savedCovers.push(toSaveComplete)
+  })
 // We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -64,7 +72,7 @@ function displayCover(newCover){
   <h3 class="tagline">A tale of <span class="tagline-1">${newCover.tagline1}</span> and <span class="tagline-2">${newCover.tagline2}</span></h3>
   <img class="price-tag" src="./assets/price.png">
   <img class="overlay" src="./assets/overlay.png">`
-  
+
 
   
 }
@@ -123,7 +131,7 @@ document.querySelector('.create-new-book-button').addEventListener('click', func
   titles.push(titleValue);
   descriptors.push(firstDescValue, secDescValue);
 
-  locationUpdate(formSection,homeSection,makeNewButton,viewSavedButton,randomCoverButton,saveCoverButton)
+  locationUpdate(formSection, homeButton, homeSection, randomCoverButton, viewSavedButton, saveCoverButton, makeNewButton, false)
   displayCover(newCover);
 });
 
