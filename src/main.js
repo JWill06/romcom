@@ -15,38 +15,41 @@ document.addEventListener('DOMContentLoaded', function () {
   makeNewButton.addEventListener('click', function () {
     // Hide homepage, show form view
     homeSection.classList.add('hidden');
-    formSection.classList.remove('hidden');
+    viewSavedButton.classList.add('hidden');
+    saveCoverButton.classList.add('hidden');
+    randomCoverButton.classList.add('hidden');
     
-    // Hide other buttons
-    viewSavedButton.style.display = 'none';
-    randomCoverButton.style.display = 'none';
-    saveCoverButton.style.display = 'none';
+    // Show specific buttons
+    formSection.classList.remove('hidden');
+    homeButton.classList.remove('hidden')
+    
   });
   
   // Event listener for "View Saved Covers" button
   viewSavedButton.addEventListener('click', function () {
     // Hide homepage, show saved covers view
     homeSection.classList.add('hidden');
-    viewSavedButton.classList.remove('hidden');
+    makeNewButton.classList.add('hidden');
+    randomCoverButton.classList.add('hidden');
+    saveCoverButton.classList.add('hidden');
     
-    // Hide other buttons
-    makeNewButton.style.display = 'none';
-    randomCoverButton.style.display = 'none';
-    saveCoverButton.style.display = 'none';
+    // Show specific buttons
+    homeButton.classList.remove('hidden');
+    viewSavedButton.classList.remove('hidden');
   });
   
   // Event listener for "Home" button
   homeButton.addEventListener('click', function () {
     // Show homepage, hide other views
-    homeSection.classList.remove('hidden');
     formSection.classList.add('hidden');
-    //savedCoversSection.classList.add('hidden');
+    homeButton.classList.add('hidden');
     
-    // Show other buttons
-    makeNewButton.style.display = 'inline-block';
-    viewSavedButton.style.display = 'inline-block';
-    randomCoverButton.style.display = 'inline-block';
-    saveCoverButton.style.display = 'inline-block';
+    // Show specific buttons
+    homeSection.classList.remove('hidden');
+    randomCoverButton.classList.remove('hidden');
+    viewSavedButton.classList.remove('hidden');
+    saveCoverButton.classList.remove('hidden');
+    makeNewButton.classList.remove('hidden');
   });
 });
 
@@ -96,10 +99,6 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
   }
   return cover
 }
-
-// var covers = [];
-// var titles = [];
-// var descriptors = [];
 
 document.querySelector('.create-new-book-button').addEventListener('click', function(event) {
   event.preventDefault();
