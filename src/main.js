@@ -48,13 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
         (toSaveComplete.coverImg === savedCovers[i].coverImg)
         ){
           originalCover = false;
-          console.log('Not Saved')
           return
         } 
       }
         if(originalCover = true){
           savedCovers.push(toSaveComplete)
-          console.log('Success!!!!!!')
         }
   });
 // We've provided a few variables below
