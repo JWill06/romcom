@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     locationUpdate(homeButton, viewSavedButton, homeSection, saveCoverButton, randomCoverButton, saveCoverButton, true)
     formSection.classList.add('hidden');
     savedCoversSection.classList.remove('hidden');
+    miniCover.innerHTML = ``
     //creates innerHTML for every cover in the savedCover array for display
     for (var i = 0; i <savedCovers.length; i++){
       newCover = savedCovers[i]
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toSaveComplete = createCover (toSaveCover, toSaveTitle, toSaveTagline1, toSaveTagline2);
   
     var originalCover = true;
+    miniCover.innerHTML = ``
 
     for (var i = 0; i < savedCovers.length; i++){
       if (
@@ -74,6 +76,23 @@ document.addEventListener('DOMContentLoaded', function () {
           savedCovers.push(toSaveComplete)
         }
   });
+
+  miniCover.addEventListener('click', function(event){
+    event.preventDefault();
+    
+    if(event.detail === 2){  
+      var activeCover = event.target.closest('section')
+      var miniCoverId = activeCover.id;
+      activeCover.remove();
+      for (var i = 0; i < savedCovers.length; i++){
+        if (savedCovers[i].id === miniCoverId) {
+          savedCovers.splice(i, 1)
+        }
+      }
+    }
+  });
+
+
 // We've provided a few variables below
 var savedCovers = [
   
@@ -184,4 +203,4 @@ createRandomCover()
 });
 
   // this deletes an item from an array (i,1) i being the index and 1 being the number of items to delete
-  savedCovers = savedCovers.toSpliced(i,1)
+  //savedCovers = savedCovers.toSpliced(i,1)
