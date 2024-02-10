@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Get references to different sections and buttons
   var homeSection = document.querySelector('.home-view');
   var formSection = document.querySelector('.form-view');
-  var savedCoversSection = document.querySelector('.saved-covers-view');
+  var savedCoversSection = document.querySelector('.saved-view');
+  var miniCover = document.querySelector('.saved-covers-section')
   
   var homeButton = document.querySelector('.home-button');
   var randomCoverButton = document.querySelector('.random-cover-button');
@@ -15,19 +16,25 @@ document.addEventListener('DOMContentLoaded', function () {
   makeNewButton.addEventListener('click', function(event){
     event.preventDefault();
     locationUpdate(formSection, homeButton, homeSection, homeSection, saveCoverButton, randomCoverButton, true)
+    savedCoversSection.classList.add('hidden')
 
   });
  
   viewSavedButton.addEventListener('click', function(event){
     event.preventDefault();
     locationUpdate(homeButton, viewSavedButton, homeSection, makeNewButton, randomCoverButton, saveCoverButton, true)
-    formSection.classList.add('hidden')
+    formSection.classList.add('hidden');
+    savedCoversSection.classList.remove('hidden');
+    addMiniCover()
+ 
+   
   }); 
  
   homeButton.addEventListener('click', function(event){
     event.preventDefault();
     locationUpdate(formSection, homeButton, homeSection, randomCoverButton, viewSavedButton, saveCoverButton, makeNewButton, false)
-    makeNewButton.classList.remove('hidden')
+    savedCoversSection.classList.add('hidden');
+    makeNewButton.classList.remove('hidden');
   }); 
 
   saveCoverButton.addEventListener('click', function(event){
@@ -77,10 +84,31 @@ function createRandomCover() {
   <h3 class="tagline">A tale of <span class="tagline-1">${newCover.tagline1}</span> and <span class="tagline-2">${newCover.tagline2}</span></h3>
   <img class="price-tag" src="./assets/price.png">
   <img class="overlay" src="./assets/overlay.png">`
+};
+function addMiniCover(){
+  miniCover.innerHTML +=
+  `<section class="mini-cover">
+    <img class="cover-image" src="./assets/prairie.jpg">
+    <h3 class = "cover-title">hello</h3>
+    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
+
+}
+function removeMiniCover(){
+  miniCover.innerHTML -=
+  `<section class="mini-cover">
+    <img class="cover-image" src="./assets/prairie.jpg">
+    <h3 class = "cover-title">hello</h3>
+    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    <img class="price-tag" src="./assets/price.png">
+    <img class="overlay" src="./assets/overlay.png">
+  </section>`
+
+}
   
 
-  
-};
 function displayCover(newCover){
   currentCover.innerHTML = 
   `<img class="cover-image" src="${newCover.coverImg}">
