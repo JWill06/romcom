@@ -25,7 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
     locationUpdate(homeButton, viewSavedButton, homeSection, makeNewButton, randomCoverButton, saveCoverButton, true)
     formSection.classList.add('hidden');
     savedCoversSection.classList.remove('hidden');
-    addMiniCover()
+    for (var i = 0; i <savedCovers.length; i++){
+      newCover = savedCovers[i]
+      console.log(newCover)
+      addMiniCover(newCover.coverImg.currentSrc,newCover.title.innerText,newCover.tagline1.innerText,newCover.tagline2.innerText)
+    };
  
    
   }); 
@@ -35,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     locationUpdate(formSection, homeButton, homeSection, randomCoverButton, viewSavedButton, saveCoverButton, makeNewButton, false)
     savedCoversSection.classList.add('hidden');
     makeNewButton.classList.remove('hidden');
+    
   }); 
 
   saveCoverButton.addEventListener('click', function(event){
@@ -85,23 +90,12 @@ function createRandomCover() {
   <img class="price-tag" src="./assets/price.png">
   <img class="overlay" src="./assets/overlay.png">`
 };
-function addMiniCover(){
+function addMiniCover(coverImg,title,tagline1,tagline2){
   miniCover.innerHTML +=
   `<section class="mini-cover">
-    <img class="cover-image" src="./assets/prairie.jpg">
-    <h3 class = "cover-title">hello</h3>
-    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
-    <img class="price-tag" src="./assets/price.png">
-    <img class="overlay" src="./assets/overlay.png">
-  </section>`
-
-}
-function removeMiniCover(){
-  miniCover.innerHTML -=
-  `<section class="mini-cover">
-    <img class="cover-image" src="./assets/prairie.jpg">
-    <h3 class = "cover-title">hello</h3>
-    <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    <img class="cover-image" src="${coverImg}">
+    <h3 class = "cover-title">${title}</h3>
+    <h3 class="tagline">A tale of <span class="tagline-1">${tagline1}</span> and <span class="tagline-2">${tagline2}</span></h3>
     <img class="price-tag" src="./assets/price.png">
     <img class="overlay" src="./assets/overlay.png">
   </section>`
