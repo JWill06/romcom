@@ -17,14 +17,18 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     locationUpdate(formSection, homeButton, homeSection, homeSection, saveCoverButton, randomCoverButton, true)
     savedCoversSection.classList.add('hidden')
+    miniCover.innerHTML = ``
+
+   
 
   });
  
   viewSavedButton.addEventListener('click', function(event){
     event.preventDefault();
-    locationUpdate(homeButton, viewSavedButton, homeSection, makeNewButton, randomCoverButton, saveCoverButton, true)
+    locationUpdate(homeButton, viewSavedButton, homeSection, saveCoverButton, randomCoverButton, saveCoverButton, true)
     formSection.classList.add('hidden');
     savedCoversSection.classList.remove('hidden');
+    //creates innerHTML for every cover in the savedCover array for display
     for (var i = 0; i <savedCovers.length; i++){
       newCover = savedCovers[i]
       console.log(newCover)
@@ -39,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
     locationUpdate(formSection, homeButton, homeSection, randomCoverButton, viewSavedButton, saveCoverButton, makeNewButton, false)
     savedCoversSection.classList.add('hidden');
     makeNewButton.classList.remove('hidden');
+    //deltes the html added by the viewSavedButton event to avoid duplicates being created
+    miniCover.innerHTML = ``
     
   }); 
 
@@ -59,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         (toSaveComplete.tagline2 === savedCovers[i].tagline2) && 
         (toSaveComplete.coverImg === savedCovers[i].coverImg)
         ){
+          
           originalCover = false;
           return
         } 
@@ -176,3 +183,5 @@ document.querySelector('.create-new-book-button').addEventListener('click', func
 createRandomCover()
 });
 
+  // this deletes an item from an array (i,1) i being the index and 1 being the number of items to delete
+  savedCovers = savedCovers.toSpliced(i,1)
