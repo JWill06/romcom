@@ -12,7 +12,7 @@ This project is a website that procedurally generates romance novel covers, allo
 
 ### Preview of App:
 
-![Preview of custom cover and random covers saved](https://imgur.com/IxCsbRm)
+![Preview of custom cover and random covers saved](file:///Users/willi/Desktop/Screenshot%202024-02-11%20at%2011.42.03%E2%80%AFAM.jpeg)
 
 ### Context:
 
