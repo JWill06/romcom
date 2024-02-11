@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var newCover = createCover(coverImg, title, tagline1, tagline2);
 
 
-    //savedCovers.push(newCover);
     covers.push(coverImg)
     titles.push(title);
     descriptors.push(tagline1, tagline2);
